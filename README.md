@@ -80,3 +80,30 @@ export default {
   },
 };
 ```
+
+## Menu Properties
+
+| Property | Required? | Default | Description |
+| :- | :-: | :-: | :- |
+| items | Y | | Must be an array of objects. For a list of properties, see the following section. |
+| maxLength | N | 0 | The maximum number of items in any row of the menu. If `rotated` is false, then every even row will have a max length of 1 less than this property. |
+| rotated | N | false | If true, the flat side will be on the top/bottom sides of the hexagon. If false, the flat side will be on the left/right sides. See the examples above. |
+| color | N | #6c6 | Sets the default color for all menu items. |
+| activeColor | N | #69c | Sets the default active color for all menu items. |
+| hoverColor | N | #69c | Sets the default hover color for all menu items. |
+| classes | N | `[]` | An array of CSS class names to add to the menu wrapper element. |
+| itemClasses | N | `[]` | An array of CSS class names to add to each menu item. |
+
+## Item Properties
+
+Each item must be an object with the following properties.
+
+| Property | Required? | Default | Description |
+| :- | :-: | :-: | :- |
+| link | Y | | A url for the menu item. Not required if the `empty` property is true. |
+| label | Y | | A label for the menu item. Not required if the `empty` property is true. |
+| empty | N | false | Skips a slot on the menu. See the example above. |
+| active | N | false | Gives the menu item the active color. |
+| color | N | #6c6 | Sets the color of the menu item. |
+| activeColor | N | #69c | Sets the color while the menu item is active. |
+| hoverColor | N | #69c | Sets the color while the cursor is hovering over the menu item. |
