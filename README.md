@@ -91,6 +91,7 @@ export default {
 | color | N | #6c6 | Sets the default color for all menu items. |
 | activeColor | N | #69c | Sets the default active color for all menu items. |
 | hoverColor | N | #69c | Sets the default hover color for all menu items. |
+| textColor | N | #fff | Sets the default text color for all menu items. |
 | classes | N | `[]` | An array of CSS class names to add to the menu wrapper element. |
 | itemClasses | N | `[]` | An array of CSS class names to add to each menu item. |
 
@@ -107,3 +108,4 @@ Each item must be an object with the following properties.
 | color | N | #6c6 | Sets the color of the menu item. |
 | activeColor | N | #69c | Sets the color while the menu item is active. |
 | hoverColor | N | #69c | Sets the color while the cursor is hovering over the menu item. |
+| textColor | N | #fff | Sets the text color for each menu item. |
