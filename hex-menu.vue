@@ -98,8 +98,7 @@ export default {
         const rowIndex = rows.length - 1;
         rows[rowIndex].push({
           ...item,
-          ...(item.empty && { link: "", label: "" }),
-          ...(item.link === this.$route.path && { active: true })
+          ...(item.empty && { link: "", label: "" })
         });
         let rotDiff = 0;
         if (!this.rotated && rows.length % 2 === 0) {
@@ -119,7 +118,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .hex-wrapper {
   display: inline-block;
   --scale: 1;
