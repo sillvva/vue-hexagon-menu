@@ -1,25 +1,40 @@
 <template>
-  <nuxt-link
-    :class="[
-      'hex-menu-item',
-      empty && 'empty',
-      active && 'active',
-      rotated && 'rotated',
-      ...classes,
-    ]"
-    :style="{
-      '--item-color': color,
-      '--hover-color': hoverColor,
-      '--active-color': activeColor,
-      '--text-color': textColor,
-    }"
-    :to="link"
-  >
-    <span class="item-label">{{ label }}</span>
-    <div class="face face1"></div>
-    <div class="face face2"></div>
-    <div class="face face3"></div>
-  </nuxt-link>
+  <div :class="['hex-menu-item-container', rotated && 'rotated']">
+    <svg
+      viewBox="0 0 800 800"
+      :class="[
+        'hex-menu-item',
+        empty && 'empty',
+        active && 'active',
+        rotated && 'rotated',
+        ...svgClasses,
+      ]"
+      :style="{
+        '--item-color': color,
+        '--hover-color': hoverColor,
+        '--active-color': activeColor,
+        '--text-color': textColor,
+      }"
+    >
+      <nuxt-link :to="link">
+        <g transform="matrix(-6.92 0 0 -6.92 400.24 400.24)" v-if="rotated">
+          <polygon
+            :class="['h-hex', 'hex', ...hexagonClasses]"
+            points="-19.9,34.5 -39.8,0 -19.9,-34.5 19.9,-34.5 39.8,0 19.9,34.5 "
+          />
+        </g>
+        <g transform="matrix(0 6.92 -6.92 0 400.17 400.33)" v-else>
+          <polygon
+            :class="['h-hex', 'hex', ...hexagonClasses]"
+            points="-19.9,34.5 -39.8,0 -19.9,-34.5 19.9,-34.5 39.8,0 19.9,34.5 "
+          />
+        </g>
+        <foreignObject class="hex-fo" x="0" y="0" width="100%" height="100%">
+          <span :class="['item-label', ...textClasses]">{{ label }}</span>
+        </foreignObject>
+      </nuxt-link>
+    </svg>
+  </div>
 </template>
 
 <script>
@@ -68,7 +83,17 @@ export default {
       required: false,
       default: "#fff",
     },
-    classes: {
+    svgClasses: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+    hexagonClasses: {
+      type: Array,
+      required: false,
+      default: () => [],
+    },
+    textClasses: {
       type: Array,
       required: false,
       default: () => [],
@@ -78,85 +103,71 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hex-menu-item {
-  --baseYMargin: 30px;
-  --baseXMargin: 4px;
-  float: left;
+.hex-menu-item-container {
+  --baseMargin: -38px;
+  --baseBottomMargin: -100px;
+  display: inline-block;
   position: relative;
-  margin: calc(var(--baseYMargin) * var(--scale))
-    calc(var(--baseXMargin) * var(--scale));
-  margin-left: calc(2px * var(--scale));
-  width: calc(190px * var(--scale));
-  height: calc(110px * var(--scale));
+  top: 50%;
+  transform: translateY(-50%);
+  width: calc(200px * var(--scale));
+  height: calc(200px * var(--scale));
+  margin-left: calc(var(--baseMargin) * var(--scale));
+  margin-right: calc(var(--baseMargin) * var(--scale));
   z-index: 1;
-  text-decoration: none;
-  text-align: center;
-  &.active,
-  &.empty {
-    cursor: default;
-  }
-  &.empty {
-    .face {
-      background-color: transparent;
-    }
-  }
-  &.active {
-    .face {
-      background-color: var(--active-color);
-    }
-  }
-  &:hover:not(.empty) {
+  pointer-events: none;
+  &:hover {
     z-index: 2;
-    .face {
-      background-color: var(--hover-color);
+    .hex-menu-item:not(.empty) {
+      .hex {
+        fill: var(--hover-color);
+      }
     }
-  }
-  .item-label {
-    line-height: calc(110px * var(--scale));
-    font-family: sans-serif;
-    white-space: nowrap;
-    font-size: calc(1.8em * var(--scale));
-    font-weight: 600;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    color: var(--text-color);
-    letter-spacing: 1px;
-  }
-  .face {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background: inherit;
-    background: var(--item-color);
-    z-index: -1;
-    backface-visibility: hidden;
-    transition: background-color 500ms ease, -webkit-transform 1s ease-in-out;
-  }
-  .face1 {
-    transform: rotate(60deg);
-  }
-  .face2 {
-    transform: rotate(0);
-  }
-  .face3 {
-    transform: rotate(-60deg);
   }
   &.rotated {
-    --baseYMargin: 45px;
-    --baseXMargin: -20px;
+    --baseMargin: -46px;
     &:nth-child(2n) {
-      top: calc(100px * var(--scale));
+      top: calc(124px * var(--scale));
     }
-    .face1 {
-      transform: rotate(30deg);
+  }
+  .hex-menu-item {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    &.active,
+    &.empty {
+      cursor: default;
     }
-    .face2 {
-      transform: rotate(90deg);
+    &.empty {
+      .hex {
+        fill: transparent;
+        pointer-events: none;
+      }
     }
-    .face3 {
-      transform: rotate(-30deg);
+    &.active {
+      .hex {
+        fill: var(--active-color);
+      }
+    }
+    .item-label {
+      font-family: sans-serif;
+      white-space: nowrap;
+      font-size: 4.5em;
+      font-weight: 600;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+      color: var(--text-color);
+      letter-spacing: 1px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .hex {
+      fill: var(--item-color);
+      z-index: -1;
+      backface-visibility: hidden;
+      transition: fill 500ms ease, -webkit-transform 1s ease-in-out;
+      pointer-events: auto;
     }
   }
 }

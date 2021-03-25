@@ -68,7 +68,9 @@ export default {
 | hoverColor | N | #69c | Sets the default hover color for all menu items. |
 | textColor | N | #fff | Sets the default text color for all menu items. |
 | classes | N | `[]` | An array of CSS class names to add to the menu wrapper element. |
-| itemClasses | N | `[]` | An array of CSS class names to add to each menu item. |
+| svgClasses | N | `[]` | An array of CSS class names to add to each menu item's svg element. |
+| hexagonClasses | N | `[]` | An array of CSS class names to add to each menu item's hexagon shape. |
+| textClasses | N | `[]` | An array of CSS class names to add to each menu item's text. |
 
 ## Item Properties
 
@@ -83,7 +85,10 @@ Each item must be an object with the following properties.
 | color | N | #6c6 | Sets the color of the menu item. |
 | activeColor | N | #69c | Sets the color while the menu item is active. |
 | hoverColor | N | #69c | Sets the color while the cursor is hovering over the menu item. |
-| textColor | N | #fff | Sets the text color for each menu item. |
+| textColor | N | #fff | Sets the text color for the menu item. |
+| svgClasses | N | #fff | Sets the text color for the menu item's svg element. |
+| hexagonClasses | N | #fff | Sets the text color for the menu item's hexagon shape. |
+| textClasses | N | #fff | Sets the text color for the menu item's text. |
 
 ## Empty Item
 
@@ -129,7 +134,7 @@ Since you can pass classes to the menu items, you can add animations to them on 
 <hex-menu
   :maxLength="3"
   :items="items"
-  :itemClasses="['menu-shake']"
+  :svgClasses="['menu-shake']"
   rotated
 ></hex-menu>
 ```
