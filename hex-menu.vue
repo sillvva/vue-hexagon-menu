@@ -139,10 +139,5 @@ export default {
       }
     }
   }
-  @media (max-width: 960px) {
-    &:not(.drawer-wrapper) {
-      display: none;
-    }
-  }
 }
 </style>
