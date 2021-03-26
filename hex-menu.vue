@@ -1,5 +1,5 @@
 <template>
-  <div :class="['hex-wrapper', rotated && 'rotated', ...wrapperClasses]">
+  <div :class="['hex-wrapper', rotated && 'rotated']">
     <div
       :class="['hex-row', r % 2 === 1 && !rotated && 'shift']"
       v-for="(row, r) in rows"
@@ -39,11 +39,6 @@ export default {
       type: Number,
       required: false,
       default: 0,
-    },
-    wrapperClasses: {
-      type: Array,
-      required: false,
-      default: () => [],
     },
     rotated: {
       type: Boolean,

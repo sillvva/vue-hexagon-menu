@@ -67,7 +67,7 @@ export default {
 | activeColor | N | `#69c` | Sets the default active color for all menu items. |
 | hoverColor | N | `#69c` | Sets the default hover color for all menu items. |
 | textColor | N | `#fff` | Sets the default text color for all menu items. |
-| wrapperClasses | N | `[]` | An array of CSS class names to add to the menu wrapper element. |
+| class | N | `[]` or `""` | An array or string of CSS class names to add to the menu wrapper element. |
 | svgClasses | N | `[]` | An array of CSS class names to add to each menu item's svg element. |
 | hexagonClasses | N | `[]` | An array of CSS class names to add to each menu item's hexagon shape. |
 | textClasses | N | `[]` | An array of CSS class names to add to each menu item's text. |
