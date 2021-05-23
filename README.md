@@ -68,9 +68,9 @@ export default {
 | hoverColor | N | `#69c` | Sets the default hover color for all menu items. |
 | textColor | N | `#fff` | Sets the default text color for all menu items. |
 | class | N | `[]` or `""` | An array or string of CSS class names to add to the menu wrapper element. |
-| svgClasses | N | `[]` | An array of CSS class names to add to each menu item's svg element. |
-| hexagonClasses | N | `[]` | An array of CSS class names to add to each menu item's hexagon shape. |
-| textClasses | N | `[]` | An array of CSS class names to add to each menu item's text. |
+| svgClasses | N | `[]` | An array of CSS class names for each menu item's svg element. |
+| hexagonClasses | N | `[]` | An array of CSS class names for each menu item's hexagon shape. |
+| textClasses | N | `[]` | An array of CSS class names for each menu item's text. |
 
 ## Item Properties
 
@@ -86,9 +86,9 @@ Each item must be an object with the following properties.
 | activeColor | N | `#69c` | Sets the color while the menu item is active. |
 | hoverColor | N | `#69c` | Sets the color while the cursor is hovering over the menu item. |
 | textColor | N | `#fff` | Sets the text color for the menu item. |
-| svgClasses | N | `[]` | Sets the text color for the menu item's svg element. |
-| hexagonClasses | N | `[]` | Sets the text color for the menu item's hexagon shape. |
-| textClasses | N | `[]` | Sets the text color for the menu item's text. |
+| svgClasses | N | `[]` | An array of CSS class names for the menu item's svg element. |
+| hexagonClasses | N | `[]` | An array of CSS class names for the menu item's hexagon shape. |
+| textClasses | N | `[]` | An array of CSS class names for the menu item's text. |
 
 ## Empty Item
 
